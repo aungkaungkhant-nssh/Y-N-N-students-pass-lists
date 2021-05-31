@@ -1,11 +1,11 @@
 <template>
     <div class="signUpContainer">
         <h1>Signup</h1>
-        <form action="">
-            <input type="text" placeholder="displayName">
-            <input type="email" placeholder="email">
-            <input type="phone" placeholder="phone">
-            <input type="password" placeholder="password">
+        <form @submit.prevent="addSubmit">
+            <input type="text" placeholder="displayName" v-model="displayName">
+            <input type="email" placeholder="email" v-model="email">
+            <input type="password" placeholder="password" v-model="password">
+            <span v-if="error" class="error">{{error}}</span>
             <button class="btn">Sign Up</button>
         </form>
     </div>
@@ -13,8 +13,23 @@
 </template>
 
 <script>
+import { ref } from '@vue/reactivity'
+import signUp from '../composables/signUp'
 export default {
-
+        setup(){
+            let {error,createAccount}=signUp();
+            let displayName=ref("")
+            let email=ref("");
+            let password=ref("");
+            
+            let addSubmit=async()=>{
+               let res=await createAccount(displayName.value,email.value,password.value)
+              if(res){
+                  console.log("hi");
+              }
+            }
+            return{displayName,email,password,addSubmit,error}
+        }
 }
 </script>
 
