@@ -1,5 +1,5 @@
 <template>
-    <div class="signUpContainer">
+    <div class="loginSignUpContainer">
         <h1>Signup</h1>
         <form @submit.prevent="addSubmit">
             <input type="text" placeholder="displayName" v-model="displayName">
@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style>
-.signUpContainer{
+.loginSignUpContainer{
         width: 500px;
         margin: 80px auto;
         background-color: #f9f9f9;
