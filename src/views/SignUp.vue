@@ -45,7 +45,7 @@ export default {
 form{
     padding: 5px 48px;
 }
-input{
+.loginSignUpContainer input{
     display: block;
     margin: 25px 0px;
     border-radius: 10px;
@@ -54,7 +54,7 @@ input{
     border: 1px solid #ccc;
    
 }
-input:focus{
+.loginSignUpContainer input:focus{
     outline: none;
 }
 .btn{

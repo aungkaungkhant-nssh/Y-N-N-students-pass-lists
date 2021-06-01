@@ -14,15 +14,17 @@
 <script>
 import { ref } from '@vue/reactivity'
 import login from '../composables/login'
+import {useRouter} from "vue-router"
 export default {
     setup(){
         let email=ref("");
+        let router=useRouter();
         let {error,checkEmailAndPassword}=login();
         let password=ref("");
         let clickBtn=async()=>{
             let res= await  checkEmailAndPassword(email.value,password.value);
             if(res){
-                console.log("ok");
+                router.push({name:"Founder"})
             }
           
         }
