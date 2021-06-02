@@ -48,7 +48,8 @@ export default {
 <style>
 .founder{
     width: 600px;
-    margin: 50px auto;
+    margin: 20px auto;
+    
     background-color: #2980b9;
       border-radius: 5px;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
@@ -61,6 +62,9 @@ export default {
 }
 form{
     padding: 20px 35px;
+    max-height:500px;
+    overflow: scroll;
+    overflow-x: hidden;
   
 }
 .founder label{

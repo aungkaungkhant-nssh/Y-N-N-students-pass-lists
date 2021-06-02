@@ -2,21 +2,27 @@
   <nav>
       <h1>Yin Nyein Nge <span class="private">(Private School)</span></h1>
       <div>
-          <button class="btn">Logout</button>
+          <button class="btn" @click="accoutLogout">Logout</button>
       </div>
   </nav>
 </template>
 
 <script>
+import { auth } from '../firebase/config'
 export default {
-
+    setup(){
+        let accoutLogout=async()=>{
+           await auth.signOut();
+        }
+        return{accoutLogout}
+    }
 }
 </script>
 
 <style>
     nav{
         width: 90%;
-        margin: 22px 20px;
+        margin: 15px 20px;
         display: flex;
         align-items: center;
         justify-content: space-between;
