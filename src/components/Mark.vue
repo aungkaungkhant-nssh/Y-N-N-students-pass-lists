@@ -41,11 +41,13 @@
 
 <script>
 import { ref } from '@vue/reactivity'
-import { db } from '../firebase/config';
+
 import totalMark from '../composables/totalMark'
+import useCollection from '../composables/useCollection'
 export default {
     setup(){
         let {caculation}=totalMark();
+        let {error,addDoc}=useCollection("details");
         let rollNo=ref("");
         let name=ref("");
         let myan=ref("");
@@ -54,8 +56,8 @@ export default {
         let chem=ref("");
         let phys=ref("");
         let bioOreco=ref("");
-        let upload=()=>{
-            let arrys=[
+        let upload=async()=>{
+            let marks=[
                 myan.value,
                 eng.value,
                 math.value,
@@ -63,7 +65,7 @@ export default {
                 phys.value,
                 bioOreco.value
                 ];
-            let total=caculation(arrys);
+            let total=caculation(marks);
             let detail={
                 rollNo:rollNo.value,
                 name:name.value,
@@ -75,8 +77,7 @@ export default {
                 bioOreco:bioOreco.value,
                 total:total
             }
-            // let res=await db.collection("details").add(deltail);
-            // console.log(res);
+            await addDoc(detail);
         }
         return{rollNo,name,myan,eng,math,chem,phys,bioOreco,upload}
     }
