@@ -1,37 +1,37 @@
 <template>
       <div class="founder">
-        <form action="">
+        <form @submit.prevent="upload">
             <div>
                   <label for="">Roll No:</label>
-                  <input type="number">
+                  <input type="number" v-model="rollNo">
             </div>
             <div>
                 <label for="">Name</label>
-                <input type="text">
+                <input type="text" v-model="name">
             </div>
             <div>
                 <label for="">Myan Mark:</label>
-                <input type="number">
+                <input type="number" v-model="myan">
             </div>
             <div>
                 <label for="">English Mark:</label>
-                <input type="number">
+                <input type="number" v-model="eng">
             </div>
             <div>
                 <label for="">Math Mark:</label>
-                <input type="number">
+                <input type="number" v-model="math">
             </div>
             <div>
                 <label for="">Chem Mark:</label>
-                <input type="number">
+                <input type="number" v-model="chem">
             </div>
             <div>
                  <label for="">Phys Mark:</label>
-                 <input type="number">
+                 <input type="number" v-model="phys">
             </div>
             <div>
                  <label for="">Bio or Eco Mark:</label>
-                 <input type="number">
+                 <input type="number" v-model="bioOreco">
             </div> 
              
             <button class="btn add">Add Mark</button>
@@ -40,8 +40,46 @@
 </template>
 
 <script>
+import { ref } from '@vue/reactivity'
+import { db } from '../firebase/config';
+import totalMark from '../composables/totalMark'
 export default {
-
+    setup(){
+        let {caculation}=totalMark();
+        let rollNo=ref("");
+        let name=ref("");
+        let myan=ref("");
+        let eng=ref("");
+        let math=ref("");
+        let chem=ref("");
+        let phys=ref("");
+        let bioOreco=ref("");
+        let upload=()=>{
+            let arrys=[
+                myan.value,
+                eng.value,
+                math.value,
+                chem.value,
+                phys.value,
+                bioOreco.value
+                ];
+            let total=caculation(arrys);
+            let detail={
+                rollNo:rollNo.value,
+                name:name.value,
+                myan:myan.value,
+                eng:eng.value,
+                math:math.value,
+                chem:chem.value,
+                phys:phys.value,
+                bioOreco:bioOreco.value,
+                total:total
+            }
+            // let res=await db.collection("details").add(deltail);
+            // console.log(res);
+        }
+        return{rollNo,name,myan,eng,math,chem,phys,bioOreco,upload}
+    }
 }
 </script>
 
