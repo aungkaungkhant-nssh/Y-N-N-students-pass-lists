@@ -3,6 +3,7 @@ import Welcome from '../views/Welcome.vue'
 import SignUp from '../views/SignUp.vue'
 import Login from '../views/Login.vue'
 import Founder from '../views/Founder.vue'
+import {auth} from "../firebase/config"
 const routes = [
   {
     path: '/',
@@ -17,12 +18,28 @@ const routes = [
   {
     path:'/admin/login',
     name:'Login',
-    component:Login
+    component:Login,
+    beforeEnter(to,from,next){
+      let user=auth.currentUser;
+      if(!user){
+        next();
+      }else{
+        next({name:'Founder'})
+      }
+   }
   },
   {
     path:'/admin/login/founder',
     name:'Founder',
-    component:Founder
+    component:Founder,
+    beforeEnter(to,from,next){
+       let user=auth.currentUser;
+       if(user){
+         next();
+       }else{
+         next({name:'Login'})
+       }
+    }
   }
 ]
 

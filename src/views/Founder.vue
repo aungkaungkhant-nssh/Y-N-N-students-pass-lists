@@ -1,5 +1,5 @@
 <template>
-    <div v-if="user">
+    <div v-if="user" class="fd">
           <FounderNav></FounderNav>
           <Mark></Mark>
           <FounderFooter :year="year"></FounderFooter>
@@ -13,17 +13,14 @@ import { ref } from '@vue/reactivity'
 import FounderFooter from '../components/FounderFooter'
 import FounderNav from '../components/FounderNav'
 import Mark from '../components/Mark'
-import { auth } from '../firebase/config'
+import getUser from '../composables/getUser'
 export default {
   components: {
     FounderFooter,
     FounderNav, Mark },
     setup(){
-        let user=ref(auth.currentUser)
+        let {user}=getUser();
         let year=ref(new Date().getFullYear());
-       auth.onAuthStateChanged((_user)=>{
-           user.value=_user;
-       })
         return{year,user}
     }
 
@@ -31,5 +28,7 @@ export default {
 </script>
 
 <style>
-
+.fd{
+    width: 100%;
+}
 </style>

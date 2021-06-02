@@ -60,7 +60,7 @@ export default {
     background-color: #e3e1ff;
     color: indigo;
 }
-form{
+.founder form{
     padding: 20px 35px;
     max-height:500px;
     overflow: scroll;
