@@ -1,0 +1,38 @@
+<template>
+  <nav>
+      <h1>Yin Nyein Nge <span class="private">(Private School)</span></h1>
+      <div>
+          <button class="btn">Logout</button>
+      </div>
+  </nav>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+    nav{
+        width: 90%;
+        margin: 22px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    nav h1{
+        font-size: 25px;
+        font-weight: bolder;
+        letter-spacing: 1px;
+        color:#2980b9;
+        margin-left: 15px;
+    }
+    nav .private{
+        font-family: 'Dancing Script', cursive;
+        color:#2c3e50;
+    }
+    nav .btn{
+        background-color: #e74c3c;
+    }
+</style>

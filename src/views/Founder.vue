@@ -1,12 +1,14 @@
 <template>
-    <div></div>
+    <FounderNav></FounderNav>
     <Mark></Mark>
 </template>
 
 <script>
+import FounderNav from '../components/FounderNav'
 import Mark from '../components/Mark'
 export default {
-  components: { Mark },
+  components: {
+    FounderNav, Mark },
 
 }
 </script>

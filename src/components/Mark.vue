@@ -48,11 +48,12 @@ export default {
 <style>
 .founder{
     width: 600px;
-    margin: 100px auto;
-    background-color: skyblue;
+    margin: 50px auto;
+    background-color: #2980b9;
       border-radius: 5px;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
 }
+
 .add{
     margin: 5px 180px;
     background-color: #e3e1ff;
@@ -65,17 +66,18 @@ form{
 .founder label{
     display: inline-block;
     width: 150px;
-    color:indigo;
+    color:#ecf0f1;
     font-size: 17px;
 }
 .founder input{
   border: none;
   border-bottom: 2px dotted indigo;
-  background-color:skyblue;
+  background-color: #2980b9;
   width:50%;
   padding: 5px 8px;
-  color:indigo;
+  color:#000;
   font-size: 16px;
+
 }
 .founder input:focus{
     outline: none;
