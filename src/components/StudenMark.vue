@@ -1,7 +1,13 @@
 <template>
     <div class="table-container">
-            <h3>Pilot<span>(1)</span> Student Mark </h3>
-          <table border="3">
+        <div class="layout">
+            <div class="sidebar">
+               <SideBar></SideBar>
+            </div>
+           
+             <div class="result">
+                 <h3>Pilot<span>(1)</span> Student Mark </h3>
+                 <table border="3">
             <tr>
                 <th>Roll No</th>
                 <th>Name</th>
@@ -92,21 +98,44 @@
             </tr>
         
          
-    </table>
+                 </table>
+            </div>
+        </div>
+            
+           
     </div>
 </template>
 
 <script>
+import SideBar from './SideBar'
 export default {
+  components: { SideBar },
 
 }
 </script>
 
 <style>
+.layout{
+    display: flex;
+    justify-content: space-between;
+}
 .table-container{
-    width: 80%;
-    margin: 1px auto;
+    width: 96%;
     text-align: center;
+}
+.sidebar{
+    background-color: #f5f6fa;
+     width: 25%;
+     margin: 10px 0px 0px 5px;
+     border-radius: 5px;
+     transition: all 0.5s;
+
+}
+.sidebar:hover{
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+}
+.result{
+    width: 73%;
 }
 .table-container h3{
     margin-bottom: 15px;
