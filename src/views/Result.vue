@@ -23,7 +23,7 @@ export default {
     .result-container{
         background-color: #fff;
         width: 100%;
-     
+        height: 100vh;
         margin-top: -20px;
     }
 </style>

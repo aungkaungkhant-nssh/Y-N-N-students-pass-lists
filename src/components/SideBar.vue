@@ -1,10 +1,10 @@
 <template>
     <div class="side">
-        <h3 class="re">Pilot List Result</h3>
+        <h3 class="re">Pilot List</h3>
         <div class="btn-container">
-            <button class="bt">Pilot (1)</button>
-            <button class="bt">Pilot (2)</button>
-            <button class="bt">Pilot (3)</button>
+            <button class="bt" @click="show('1')">Pilot (1)</button>
+            <button class="bt" @click="show('2')">Pilot (2)</button>
+            <button class="bt" @click="show('3')">Pilot (3)</button>
         </div>
         
     </div>
@@ -13,7 +13,13 @@
 
 <script>
 export default {
-
+    setup(props,context){
+        let show=(num)=>{
+            console.log("hi");
+            context.emit('showNumber',num);
+        }
+        return{show}
+    }
 }
 </script>
 

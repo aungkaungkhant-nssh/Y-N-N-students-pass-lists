@@ -2,11 +2,11 @@
     <div class="table-container">
         <div class="layout">
             <div class="sidebar">
-               <SideBar></SideBar>
+               <SideBar @showNumber="numberShow"></SideBar>
             </div>
            
              <div class="result">
-                 <h3>Pilot<span>(1)</span> Student Mark </h3>
+                 <h3>Pilot<span>({{check}})</span> Student Mark </h3>
                  <table border="3">
             <tr>
                 <th>Roll No</th>
@@ -19,30 +19,52 @@
                 <th>Bio/Eco</th>
                 <th>Total</th>
             </tr>
-           
+           <tbody v-for="st in fetchDetails" :key="st.id">
+                <tr>
+                    <th>{{st.rollNo}}</th>
+                    <th>{{st.name}}</th>
+                    <th>{{st.myan}}</th>
+                    <th>{{st.eng}}</th>
+                    <th>{{st.math}}</th>
+                    <th>{{st.chem}}</th>
+                    <th>{{st.phys}}</th>
+                    <th>{{st.bioOreco}}</th>
+                    <th>{{st.total}}</th>
+                </tr>
+           </tbody>
                  </table>
             </div>
         </div>
-          
+      
            
     </div>
 </template>
 
 <script>
-import { onMounted, ref } from '@vue/runtime-core';
+import { computed, onMounted, ref } from '@vue/runtime-core';
 import { db } from '../firebase/config'
 import SideBar from './SideBar'
 export default {
   components: { SideBar },
   setup(){
+      let check=ref("1");
+      let numberShow=(num)=>{
+        check.value=num;
+      }
       let details=ref([]);
+        let fetchDetails=computed(()=>{
+          return details.value.filter((dt)=>{
+              return dt.pilotNo===check.value
+          })
+        })
       onMounted(async()=>{
             let res=await db.collection("details").orderBy("rollNo").get();
             details.value=res.docs.map((doc)=>{
                 return  {id:doc.id,...doc.data()}
             })
+         
       })
-      return{details};
+      return{details,numberShow,fetchDetails,check};
   }
 
 }
