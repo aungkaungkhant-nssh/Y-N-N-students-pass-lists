@@ -2,6 +2,7 @@
   <nav>
       <h1>Yin Nyein Nge <span class="private">(Private School)</span></h1>
       <div>
+           <button class="btn btn-primary" @click="result">Result Page</button>
           <button class="btn" @click="accoutLogout">Logout</button>
       </div>
   </nav>
@@ -9,12 +10,17 @@
 
 <script>
 import { auth } from '../firebase/config'
+import {useRouter} from 'vue-router'
 export default {
     setup(){
         let accoutLogout=async()=>{
            await auth.signOut();
         }
-        return{accoutLogout}
+        let router=useRouter();
+        let result=()=>{
+            router.push('/')
+        }
+        return{accoutLogout,result}
     }
 }
 </script>
@@ -40,5 +46,9 @@ export default {
     }
     nav .btn{
         background-color: #e74c3c;
+    }
+    nav .btn-primary{
+        background-color: skyblue;
+        margin-right: 15px;
     }
 </style>

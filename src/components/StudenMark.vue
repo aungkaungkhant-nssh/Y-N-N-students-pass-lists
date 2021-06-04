@@ -6,7 +6,7 @@
             </div>
            
              <div class="result">
-                 <h3>Pilot<span>({{check}})</span> Student Mark </h3>
+                 <h3>Pilot<span>({{check}})</span> Students Mark </h3>
                  <table border="3">
             <tr>
                 <th>Roll No</th>
