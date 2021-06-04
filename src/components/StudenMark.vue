@@ -19,97 +19,31 @@
                 <th>Bio/Eco</th>
                 <th>Total</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td style="width: 231px;">Aung Kaung Khant</td>
-                <td>50</td>
-                <td>35</td>
-                <td>67</td>
-                <td>46</td>
-                <td>87</td>
-                <td>45</td>
-                <td>450</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Aung Kaung Khant</td>
-                <td>50</td>
-                <td>35</td>
-                <td>67</td>
-                <td>46</td>
-                <td>87</td>
-                <td>45</td>
-                <td>450</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Aung Kaung Khant</td>
-                <td>50</td>
-                <td>35</td>
-                <td>67</td>
-                <td>46</td>
-                <td>87</td>
-                <td>45</td>
-                <td>450</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Aung Kaung Khant</td>
-                <td>50</td>
-                <td>35</td>
-                <td>67</td>
-                <td>46</td>
-                <td>87</td>
-                <td>45</td>
-                <td>450</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Aung Kaung Khant</td>
-                <td>50</td>
-                <td>35</td>
-                <td>67</td>
-                <td>46</td>
-                <td>87</td>
-                <td>45</td>
-                <td>450</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Aung Kaung Khant</td>
-                <td>50</td>
-                <td>35</td>
-                <td>67</td>
-                <td>46</td>
-                <td>87</td>
-                <td>45</td>
-                <td>450</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Aung Kaung Khant</td>
-                <td>50</td>
-                <td>35</td>
-                <td>67</td>
-                <td>46</td>
-                <td>87</td>
-                <td>45</td>
-                <td>450</td>
-            </tr>
-        
-         
+           
                  </table>
             </div>
         </div>
-            
+          
            
     </div>
 </template>
 
 <script>
+import { onMounted, ref } from '@vue/runtime-core';
+import { db } from '../firebase/config'
 import SideBar from './SideBar'
 export default {
   components: { SideBar },
+  setup(){
+      let details=ref([]);
+      onMounted(async()=>{
+            let res=await db.collection("details").orderBy("rollNo").get();
+            details.value=res.docs.map((doc)=>{
+                return  {id:doc.id,...doc.data()}
+            })
+      })
+      return{details};
+  }
 
 }
 </script>
