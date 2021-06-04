@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Welcome from '../views/Welcome.vue'
+import Result from '../views/Result.vue'
 import SignUp from '../views/SignUp.vue'
 import Login from '../views/Login.vue'
 import Founder from '../views/Founder.vue'
@@ -7,8 +7,8 @@ import {auth} from "../firebase/config"
 const routes = [
   {
     path: '/',
-    name: 'Welcome',
-    component: Welcome
+    name: 'Result',
+    component:Result
   },
   {
     path:'/admin/signUp',

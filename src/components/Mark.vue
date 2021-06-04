@@ -2,6 +2,10 @@
       <div class="founder">
         <form @submit.prevent="upload">
             <div>
+                <label for="">Pilot No</label>
+                <input type="number" v-model="pilotNo">
+            </div>
+            <div>
                   <label for="">Roll No:</label>
                   <input type="number" v-model="rollNo">
             </div>
@@ -49,6 +53,7 @@ export default {
         let {caculation}=totalMark();
         let {error,addDoc}=useCollection("details");
         let rollNo=ref("");
+        let pilotNo=ref("");
         let name=ref("");
         let myan=ref("");
         let eng=ref("");
@@ -67,6 +72,7 @@ export default {
                 ];
             let total=caculation(marks);
             let detail={
+                pilotNo:pilotNo.value,
                 rollNo:rollNo.value,
                 name:name.value,
                 myan:myan.value,
@@ -78,8 +84,17 @@ export default {
                 total:total
             }
             await addDoc(detail);
+            pilotNo.value="";
+            rollNo.value="";
+            name.value="";
+            myan.value="";
+            eng.value="";
+            math.value="";
+            chem.value="";
+            phys.value="";
+            bioOreco.value="";
         }
-        return{rollNo,name,myan,eng,math,chem,phys,bioOreco,upload}
+        return{rollNo,name,myan,eng,math,chem,phys,bioOreco,upload,pilotNo}
     }
 }
 </script>

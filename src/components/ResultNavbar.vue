@@ -4,13 +4,20 @@
             <img src="../assets/edu.jpg" alt="">
             <h1>Yin Nyein Nge <span>(private School)</span></h1>
         </div>
-        <button>Admin</button>
+        <button @click="admin">Admin</button>
     </nav>
 </template>
 
 <script>
+import {useRouter} from 'vue-router'
 export default {
-
+    setup(){
+        let router=useRouter();
+        let admin=()=>{
+            router.push({name:"Login"})
+        }
+        return{admin}
+    }
 }
 </script>
 

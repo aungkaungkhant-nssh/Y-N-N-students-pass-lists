@@ -1,16 +1,20 @@
 <template>
         <div class="result-container">
-            <ResultNavbar></ResultNavbar>
+           <ResultNavbar></ResultNavbar>
             <StudenMark></StudenMark>
         </div>
 </template>
 
 <script>
-import StudenMark from './StudenMark'
-import ResultNavbar from './ResultNavbar'
+
+import ResultNavbar from '../components/ResultNavbar'
+import StudenMark from '../components/StudenMark'
+
 export default {
   components: {
-    StudenMark, ResultNavbar },
+    ResultNavbar,
+    StudenMark,
+     ResultNavbar },
    
 }
 </script>
@@ -19,7 +23,7 @@ export default {
     .result-container{
         background-color: #fff;
         width: 100%;
-        height: 120vh;
+     
         margin-top: -20px;
     }
 </style>
